@@ -1,0 +1,170 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    color:#4f4c4c;
+    padding:0;
+    margin:0;
+    background: #fafafa;
+}
+
+p{    
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar{
+    max-width:250px;
+    min-width:250px;
+    min-height:100vh;
+    background: #cc5151;
+    color: #fff;
+    transition: all 0.3s;    
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #cb3535;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 5px 10px;
+    font-weight:bold;
+    font-size:20px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+
+}
+
+#sidebar ul li a:hover {
+    color: #cc5151;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #cb3535;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #cb3535;
+}
+
+#sidebar.active{
+    margin-left:-250px;
+}
+
+a[data-toggle="collapse"]{
+    position:relative;
+}
+
+.dropdown-toggle::after{
+    display:block;
+    position:absolute;
+    top:50%;
+    right:20px;
+    transform:translateY(-50%);
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+
+/********Content*********/
+
+#content{    
+    width:100%;
+}
+
+.main_content{
+    border-top:1px solid #6f6f6f;
+}
+
+.title_header , .main{
+    margin:1% 0;
+}
+
+.title_header{    
+    text-align:center; 
+    background:white;   
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+}
+
+.title_header h2{
+    font-weight:bold;
+    font-size:35px;  
+    color:#cb3535;    
+}
+
+.main{
+    background-color:white;
+}
+
+.title_table{
+    padding:2% 1%;
+ 
+}
+
+.title_table .title_name_table{    
+    font-size:25px;    
+    border-bottom:1px solid #cbcbcb;
+}
+
+.modal-title{    
+    color:#cb3535;
+}
+
+.delete{
+    padding:2% 0;
+}
+
+.delete_content{
+    border:1px solid #fec9c9;
+    border-radius:10px;
+}
+
+.delete_header{
+    border-bottom:1px solid #cbcbcb;
+    color:#cb3535;
+}
+
+.delete_body{
+    padding:3% 0;
+    border-bottom:1px solid #cbcbcb;
+    font-size:20px;
+}
+
+.delete_footer{
+    padding:2% 0;
+}
