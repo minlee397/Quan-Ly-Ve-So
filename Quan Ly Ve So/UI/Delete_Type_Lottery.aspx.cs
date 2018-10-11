@@ -18,8 +18,7 @@ namespace Quan_Ly_Ve_So.UI
         }
 
         public void MessageBox(string str, string Path)
-        {
-            int a = 0;
+        {            
             Response.Write("<script> alert('" + str + ".'); window.location.href='./" + Path + "'; </script>");
         }
 
