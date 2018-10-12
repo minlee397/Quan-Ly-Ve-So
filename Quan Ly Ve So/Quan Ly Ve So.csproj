@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -171,7 +172,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="UI\Deal.aspx" />
+    <Content Include="UI\Delete_Deal.aspx" />
     <Content Include="UI\Delete_Type_Lottery.aspx" />
+    <Content Include="UI\Edit_Deal.aspx" />
     <Content Include="UI\Edit_Type_Lottery.aspx" />
     <Content Include="UI\Type_Lottery.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -199,6 +203,7 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BL\DealBL.cs" />
     <Compile Include="BL\Type_LotteryBL.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -208,6 +213,7 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAL\ConnectDB.cs" />
+    <Compile Include="DAL\DealDAL.cs" />
     <Compile Include="DAL\Type_LotteryDAL.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -216,6 +222,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DTO\DealDTO.cs" />
     <Compile Include="DTO\Type_LotteryDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -235,12 +242,33 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="UI\Deal.aspx.cs">
+      <DependentUpon>Deal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Deal.aspx.designer.cs">
+      <DependentUpon>Deal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Delete_Deal.aspx.cs">
+      <DependentUpon>Delete_Deal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Delete_Deal.aspx.designer.cs">
+      <DependentUpon>Delete_Deal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Delete_Type_Lottery.aspx.cs">
       <DependentUpon>Delete_Type_Lottery.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\Delete_Type_Lottery.aspx.designer.cs">
       <DependentUpon>Delete_Type_Lottery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit_Deal.aspx.cs">
+      <DependentUpon>Edit_Deal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Edit_Deal.aspx.designer.cs">
+      <DependentUpon>Edit_Deal.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Edit_Type_Lottery.aspx.cs">
       <DependentUpon>Edit_Type_Lottery.aspx</DependentUpon>
@@ -276,7 +304,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62105</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
