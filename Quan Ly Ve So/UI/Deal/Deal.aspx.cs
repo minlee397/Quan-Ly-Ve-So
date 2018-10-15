@@ -31,7 +31,7 @@ namespace Quan_Ly_Ve_So.UI
         public void Loadinfo()
         {
             DateTime date = DateTime.Now;
-            input_DateReceive.Text = date.ToShortDateString();
+            input_DateReceive.Text = date.ToString("dd/MM/yyyy");
             input_DateReceive.Attributes.Add("readonly", "readonly");
             input_QuantitySell.Attributes.Add("readonly", "readonly");
         }
