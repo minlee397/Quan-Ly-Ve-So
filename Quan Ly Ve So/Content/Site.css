@@ -6,6 +6,11 @@ body {
     background: #fafafa;
 }
 
+.myrblclass input[type="radio"]{
+   margin-left: 10px;
+   margin-right: 1px;
+}
+
 p{    
     font-size: 1.1em;
     font-weight: 300;
@@ -41,7 +46,7 @@ a, a:hover, a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid #cbcbcb;
 }
 
 #sidebar ul p {

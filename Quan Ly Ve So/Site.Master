@@ -6,7 +6,10 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Quản Lý Vé Số</title>
+    <link rel="shortcut icon" href="./images/lottery_icon.png" />    
+    
+
+    <title>Quản Lý Vé Số</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -15,8 +18,7 @@
         <%: Styles.Render("~/Content/css") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <webopt:bundlereference runat="server" path="~/Content/css" />    
 
 </head>
 <body>
@@ -50,22 +52,24 @@
 
                 <ul class="list-unstyled components">
                     <p>Các chức năng</p>
-                    <li class="active">
+                    <li class="">
                         <!--<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"></a>
                         <ul class="list-unstyled" id="homeSubmenu">
                             <li><a href="#">Home 1</a></li>
                             <li><a href="#">Home 2</a></li>
                             <li><a href="#">Home 3</a></li>
                         </ul>-->
-                        <a href="#">Tổng Quan</a>                        
+                        <a href="#"><i class="fa fa-dashboard"></i> Tổng Quan</a>                        
                     </li>
-                    <li><a href="#">Loại vé số</a></li>
-                    <li><a href="#">Đại Lý</a></li>
-                    <li><a href="#">Đợt Phát hành</a></li>
-                    <li><a href="#">Cài đặt</a></li>
+                    <li><a href="../Type_Lottery/Type_Lottery.aspx"><i class="fa fa-ticket"></i> Loại vé số</a></li>
+                    <li><a href="../Agency/Agency.aspx"><i class="fa fa-home"></i> Đại Lý</a></li>
+                    <li><a href="../SignUp_Lottery/SignUp_Lottery.aspx"><i class="fa fa-pencil-square-o"></i> Đăng kí vé số</a></li>
+                    <li><a href="../Deal/Deal.aspx"><i class="fa fa-truck"></i> Đợt Phát hành</a></li>
+                    <li><a href="../Result_Lottery/Result_Lottery.aspx"><i class="fa fa-file-text-o"></i> Kết quả xổ số</a></li>
+                    <li><a href="../Prize/Prize.aspx"><i class="fa fa-trophy"></i> Loại giải thưởng</a></li>
+                    <li><a href="#"><i class="fa fa-cog"></i> Cài đặt</a></li>
                 </ul>
-            </nav>
-
+            </nav>            
             
 
             <div id="content">
@@ -79,7 +83,7 @@
                         </div>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Thông báo</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Tin nhắn</a></li>
+                            <li><a href="#"><span class="fa fa-envelope"></span> Tin nhắn</a></li>
                         </ul>
                         
                     </div>
@@ -100,7 +104,7 @@
           
         <hr />
         <footer>
-            <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+            <p>&copy; <%: DateTime.Now.Year %> - Team group DHGT</p>
         </footer>
     </form>
 

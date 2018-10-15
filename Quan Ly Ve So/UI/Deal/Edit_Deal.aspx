@@ -35,6 +35,7 @@
                 <asp:Label ID="DateReceive" runat="server" Text="Ngày nhận: " CssClass="control-label col-sm-2"></asp:Label>
                 <div class="col-sm-6">
                     <asp:TextBox ID="input_DateReceive" runat="server" CssClass="form-control"></asp:TextBox>
+                    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="input_DateReceive" Format="dd/MM/yyyy" />
                 </div>
             </div>
             <div class="form-group">

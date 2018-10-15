@@ -37,7 +37,7 @@ namespace Quan_Ly_Ve_So.UI
             table.Append("<th>STT</th><th>Mã Đài</th><th>Tên Đài</th><th>Sửa</th><th>Xóa</th>");
             table.Append("</tr>");
 
-            int i = 0;
+            int i = 1;
             if (rd.HasRows)
             {
                 while (rd.Read())

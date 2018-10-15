@@ -23,10 +23,20 @@ namespace Quan_Ly_Ve_So.UI
             uploadData();
             if(!IsPostBack)
             {
-                Bind();
+                BindData();
+                Loadinfo();
             }
         }
-        public void Bind()
+
+        public void Loadinfo()
+        {
+            DateTime date = DateTime.Now;
+            input_DateReceive.Text = date.ToShortDateString();
+            input_DateReceive.Attributes.Add("readonly", "readonly");
+            input_QuantitySell.Attributes.Add("readonly", "readonly");
+        }
+
+        public void BindData()
         {
             ddlType.DataSource = DBL.TypeList();         
             ddlType.DataValueField = "ID_TYPE";            
@@ -52,7 +62,7 @@ namespace Quan_Ly_Ve_So.UI
             table.Append("<th>STT</th><th>Mã đài</th><th>Mã đại lý</th><th>Số lượng nhận</th><th>Số lượng bán</th><th>Ngày nhận</th><th>Hoa hồng</th><th>Sửa</th><th>Xóa</th>");
             table.Append("</tr>");
 
-            int i = 0;
+            int i = 1;
             if (rd.HasRows)
             {
                 while (rd.Read())
@@ -63,12 +73,17 @@ namespace Quan_Ly_Ve_So.UI
                     table.Append("<td>" + rd[1] + "</td>");
                     table.Append("<td>" + rd[2] + "</td>");
                     table.Append("<td>" + rd[3] + "</td>");
-                    table.Append("<td>" + rd[4] + "</td>");
+
+                    string[] d = rd[4].ToString().Split(' ');
+                    string[] date_s = d[0].Split('/');
+                    string date = date_s[1] + "-" + date_s[0] + "-" + date_s[2];
+
+                    table.Append("<td>" + d[0] + "</td>");
                     table.Append("<td>" + rd[5] + "</td>");
                     table.Append("<td>");
-                    table.Append("<a href='./Edit_Deal?edit=" + rd[0] + "'><i class='fa fa-edit'></i></a>");
-                    table.Append("</td>");
-                    table.Append("<td><a href='Delete_Deal?delete=" + rd[0] + "'><i class='fa fa-trash'></i></a></td>");
+                    table.Append("<a href='./Edit_Deal?edit1=" + rd[0] + "&edit2=" + rd[1] + "&edit3=" + date + "'><i class='fa fa-edit'></i></a>");
+                    table.Append("</td>"); 
+                    table.Append("<td><a href='./Delete_Deal?delete=" + rd[0] + "'><i class='fa fa-trash'></i></a></td>");
                     table.Append("</tr>");
                     i++;
                 }
@@ -85,9 +100,16 @@ namespace Quan_Ly_Ve_So.UI
             DO.ID_TYPE = ddlType.Text;
             DO.ID_AGENCY = ddlAgency.Text;
             DO.QUANTITY_RECEIVE = input_QuantityReceive.Text;
+            
             DO.QUANTITY_SELL = input_QuantitySell.Text;
-            DO.DATE_RECEIVE = input_DateReceive.Text;
+
+            string[] d = input_DateReceive.Text.Split('/');
+            string date = d[1] + "-" + d[0] + "-" + d[2];
+            DO.DATE_RECEIVE = date;
             DO.COMMISSION = input_Commission.Text;
+
+            
+
             if (DBL.Insert(DO) == true)
             {
                 MessageBox("Thêm thành công", "Deal.aspx");

@@ -10,123 +10,87 @@
 namespace Quan_Ly_Ve_So.UI {
     
     
-    public partial class Edit_Deal {
+    public partial class SignUp_Lottery {
         
         /// <summary>
-        /// Type control.
+        /// Id_agency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Type;
+        protected global::System.Web.UI.WebControls.Label Id_agency;
         
         /// <summary>
-        /// input_Type control.
+        /// input_Id_agency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox input_Type;
+        protected global::System.Web.UI.WebControls.DropDownList input_Id_agency;
         
         /// <summary>
-        /// Agency control.
+        /// Date_sign control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Agency;
+        protected global::System.Web.UI.WebControls.Label Date_sign;
         
         /// <summary>
-        /// input_Agency control.
+        /// input_Date_sign control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox input_Agency;
+        protected global::System.Web.UI.WebControls.TextBox input_Date_sign;
         
         /// <summary>
-        /// QuantityReceive control.
+        /// Calendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label QuantityReceive;
+        protected global::AjaxControlToolkit.CalendarExtender Calendar;
         
         /// <summary>
-        /// input_QuantityReceive control.
+        /// Quanity_sign control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox input_QuantityReceive;
+        protected global::System.Web.UI.WebControls.Label Quanity_sign;
         
         /// <summary>
-        /// QuantitySell control.
+        /// input_Quanity_sign control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label QuantitySell;
+        protected global::System.Web.UI.WebControls.TextBox input_Quanity_sign;
         
         /// <summary>
-        /// input_QuantitySell control.
+        /// function_insert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox input_QuantitySell;
+        protected global::System.Web.UI.WebControls.Button function_insert;
         
         /// <summary>
-        /// DateReceive control.
+        /// table_lottery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DateReceive;
-        
-        /// <summary>
-        /// input_DateReceive control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox input_DateReceive;
-        
-        /// <summary>
-        /// Commission control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Commission;
-        
-        /// <summary>
-        /// input_Commission control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox input_Commission;
-        
-        /// <summary>
-        /// btn_edit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_edit;
+        protected global::System.Web.UI.WebControls.PlaceHolder table_lottery;
     }
 }

@@ -12,8 +12,9 @@ namespace Quan_Ly_Ve_So
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkID=303951
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/site").Include(
-                            "~/Scripts/WebForms/site.js"));
+            bundles.Add(new ScriptBundle("~/bundles/Site").Include(
+                            "~/Scripts/WebForms/Site.js",
+                            "~/Scripts/bootstrap-datetimepicker.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                             "~/Scripts/jquery-*"));

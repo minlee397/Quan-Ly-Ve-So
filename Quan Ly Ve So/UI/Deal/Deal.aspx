@@ -35,12 +35,12 @@
                                     <div class="form-group">                                        
                                         <asp:Label ID="Quantity_Sell" runat="server" Text="Số lượng bán: " CssClass="control-label col-sm-3 col-lg-"></asp:Label>
                                         <div class="col-sm-6 col-lg-6">
-                                             <asp:TextBox ID="input_QuantitySell" runat="server" CssClass="form-control"></asp:TextBox>
+                                             <asp:TextBox ID="input_QuantitySell" runat="server" CssClass="form-control" Text="0"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">                                        
                                         <asp:Label ID="DateReceive" runat="server" Text="Ngày nhận: " CssClass="control-label col-sm-3 col-lg-"></asp:Label>
-                                        <div class="col-sm-6 col-lg-6">
+                                        <div class="col-sm-6 col-lg-6">                                             
                                              <asp:TextBox ID="input_DateReceive" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>

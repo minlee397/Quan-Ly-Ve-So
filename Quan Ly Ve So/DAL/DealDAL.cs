@@ -22,7 +22,7 @@ namespace Quan_Ly_Ve_So.DAL
         public DataSet TypeList()
         {
             ConnectDB.con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT DISTINCT ID_TYPE FROM DEAL", ConnectDB.con);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT DISTINCT ID_TYPE FROM TYPE_LOTTERY", ConnectDB.con);
             DataSet ds = new DataSet();
             da.Fill(ds);
             return ds;
@@ -37,13 +37,14 @@ namespace Quan_Ly_Ve_So.DAL
             return ds;
         }
 
-        public DataTable Find(string search_by, string value)
+        public DataTable Find(DealDTO TOP)
         {
             ConnectDB.con.Open();
-            SqlCommand cmd = new SqlCommand("find_DEAL", ConnectDB.con);
+            SqlCommand cmd = new SqlCommand("find_MUL_DEAL", ConnectDB.con);
             cmd.Connection = ConnectDB.con;
-            cmd.Parameters.Add("@SEARCH_BY", SqlDbType.NVarChar).Value = search_by;
-            cmd.Parameters.Add("@VALUE", SqlDbType.NVarChar).Value = value;
+            cmd.Parameters.Add("@ID_TYPE", SqlDbType.VarChar).Value = TOP.ID_TYPE;
+            cmd.Parameters.Add("@ID_AGENCY", SqlDbType.VarChar).Value = TOP.ID_AGENCY;
+            cmd.Parameters.Add("@DATE", SqlDbType.VarChar).Value = TOP.DATE_RECEIVE;
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
@@ -62,7 +63,7 @@ namespace Quan_Ly_Ve_So.DAL
                 cmd.Parameters.Add("@ID_AGENCY", SqlDbType.VarChar).Value = TOP.ID_AGENCY;
                 cmd.Parameters.Add("@QUANTITY_RECEIVE", SqlDbType.Int).Value = TOP.QUANTITY_RECEIVE;
                 cmd.Parameters.Add("@QUANTITY_SELL", SqlDbType.Int).Value = TOP.QUANTITY_SELL;
-                cmd.Parameters.Add("@DATE_RECEIVE", SqlDbType.DateTime).Value = TOP.DATE_RECEIVE;
+                cmd.Parameters.Add("@DATE_RECEIVE", SqlDbType.VarChar).Value = TOP.DATE_RECEIVE;
                 cmd.Parameters.Add("@COMMISSION", SqlDbType.Float).Value = TOP.COMMISSION;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();
@@ -86,7 +87,7 @@ namespace Quan_Ly_Ve_So.DAL
                 cmd.Parameters.Add("@ID_AGENCY", SqlDbType.VarChar).Value = TOP.ID_AGENCY;
                 cmd.Parameters.Add("@QUANTITY_RECEIVE", SqlDbType.Int).Value = TOP.QUANTITY_RECEIVE;
                 cmd.Parameters.Add("@QUANTITY_SELL", SqlDbType.Int).Value = TOP.QUANTITY_SELL;
-                cmd.Parameters.Add("@DATE_RECEIVE", SqlDbType.DateTime).Value = TOP.DATE_RECEIVE;
+                cmd.Parameters.Add("@DATE_RECEIVE", SqlDbType.VarChar).Value = TOP.DATE_RECEIVE;
                 cmd.Parameters.Add("@COMMISSION", SqlDbType.Float).Value = TOP.COMMISSION;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();

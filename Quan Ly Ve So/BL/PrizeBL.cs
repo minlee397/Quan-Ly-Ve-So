@@ -1,39 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Quan_Ly_Ve_So.DAL;
+﻿using Quan_Ly_Ve_So.DAL;
 using Quan_Ly_Ve_So.DTO;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
 
 namespace Quan_Ly_Ve_So.BL
 {
-    public class DealBL
+    public class PrizeBL
     {
-        DealDAL D_DAL = new DealDAL();
+        PrizeDAL P_DAL = new PrizeDAL();
         public SqlDataReader LoadData()
         {
-            return D_DAL.LoadData();
-        }
-        public DataSet TypeList()
-        {
-            return D_DAL.TypeList();
-        }
-        public DataSet AgencyList()
-        {
-            return D_DAL.AgencyList();
-        }
-        public DataTable Find(DealDTO TOP)
-        {
-            return D_DAL.Find(TOP);
+            return P_DAL.LoadData();
         }
 
-        public bool Insert(DealDTO DO)
+        public DataTable Find(string search_by, string value)
+        {
+            return P_DAL.Find(search_by, value);
+        }
+
+        public bool Insert(PrizeDTO PRP)
         {
             try
             {
-                D_DAL.Insert(DO);
+                P_DAL.Insert(PRP);
             }
             catch (Exception ex)
             {
@@ -42,11 +35,11 @@ namespace Quan_Ly_Ve_So.BL
             return true;
         }
 
-        public bool Edit(DealDTO DO)
+        public bool Edit(PrizeDTO PRP)
         {
             try
             {
-                D_DAL.Edit(DO);
+                P_DAL.Edit(PRP);
             }
             catch (Exception ex)
             {
@@ -59,7 +52,7 @@ namespace Quan_Ly_Ve_So.BL
         {
             try
             {
-                D_DAL.Delete(id_delete);
+                P_DAL.Delete(id_delete);
             }
             catch (Exception ex)
             {

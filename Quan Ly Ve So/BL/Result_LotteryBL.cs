@@ -1,39 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Quan_Ly_Ve_So.DAL;
+﻿using Quan_Ly_Ve_So.DAL;
 using Quan_Ly_Ve_So.DTO;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
 
 namespace Quan_Ly_Ve_So.BL
 {
-    public class DealBL
+    public class Result_LotteryBL
     {
-        DealDAL D_DAL = new DealDAL();
+        Result_LotteryDAL R_DAL = new Result_LotteryDAL();
         public SqlDataReader LoadData()
         {
-            return D_DAL.LoadData();
-        }
-        public DataSet TypeList()
-        {
-            return D_DAL.TypeList();
-        }
-        public DataSet AgencyList()
-        {
-            return D_DAL.AgencyList();
-        }
-        public DataTable Find(DealDTO TOP)
-        {
-            return D_DAL.Find(TOP);
+            return R_DAL.LoadData();
         }
 
-        public bool Insert(DealDTO DO)
+
+        /****************************/
+       
+        public DataSet TypeList()
+        {
+            return R_DAL.TypeList();
+        }
+        public DataSet PrizeList()
+        {
+            return R_DAL.PrizeList();
+        }
+        /****************************/
+
+        public DataTable Find(string search_by, string value)
+        {
+            return R_DAL.Find(search_by, value);
+        }
+
+        public bool Insert(Result_LotteryDTO RSL)
         {
             try
             {
-                D_DAL.Insert(DO);
+                R_DAL.Insert(RSL);
             }
             catch (Exception ex)
             {
@@ -42,11 +48,11 @@ namespace Quan_Ly_Ve_So.BL
             return true;
         }
 
-        public bool Edit(DealDTO DO)
+        public bool Edit(Result_LotteryDTO RSL)
         {
             try
             {
-                D_DAL.Edit(DO);
+                R_DAL.Edit(RSL);
             }
             catch (Exception ex)
             {
@@ -59,7 +65,7 @@ namespace Quan_Ly_Ve_So.BL
         {
             try
             {
-                D_DAL.Delete(id_delete);
+                R_DAL.Delete(id_delete);
             }
             catch (Exception ex)
             {
