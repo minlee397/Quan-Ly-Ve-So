@@ -41,7 +41,7 @@ namespace Quan_Ly_Ve_So.UI
             DO.ID_AGENCY = id_edit2;
             DO.DATE_RECEIVE = id_edit3;
 
-            DataTable tb = DBL.Find(DO);
+            DataTable tb = DBL.Find_mul_deal(DO);
             input_Type.Text = tb.Rows[0][0].ToString();
             input_Agency.Text = tb.Rows[0][1].ToString();
             input_QuantityReceive.Text = tb.Rows[0][2].ToString();
@@ -62,6 +62,7 @@ namespace Quan_Ly_Ve_So.UI
             DO.QUANTITY_SELL = input_QuantitySell.Text;
 
             string[] d = input_DateReceive.Text.Split('/');
+
             string date = d[1] + "-" + d[0] + "-" + d[2];
             DO.DATE_RECEIVE = date;
                        

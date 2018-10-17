@@ -40,6 +40,42 @@ namespace Quan_Ly_Ve_So.UI {
         protected global::System.Web.UI.WebControls.Button function_insert;
         
         /// <summary>
+        /// Search control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Search;
+        
+        /// <summary>
+        /// Search_by control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList Search_by;
+        
+        /// <summary>
+        /// input_search control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox input_search;
+        
+        /// <summary>
+        /// button_find control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button button_find;
+        
+        /// <summary>
         /// table_lottery control.
         /// </summary>
         /// <remarks>

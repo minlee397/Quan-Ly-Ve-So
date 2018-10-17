@@ -6,6 +6,10 @@ body {
     background: #fafafa;
 }
 
+.label_style{
+    font-weight:bold;    
+}
+
 .myrblclass input[type="radio"]{
    margin-left: 10px;
    margin-right: 1px;
@@ -172,4 +176,28 @@ a[data-toggle="collapse"]{
 
 .delete_footer{
     padding:2% 0;
+}
+
+.box_filter{
+    padding-bottom:2%;
+}
+
+.table_style{
+    padding-top:2%;
+}
+
+.info_deal_left, .info_deal_right{    
+    padding:3%;    
+}
+
+.info_deal_left{
+    border-right:1px solid;
+}
+
+.info_deal_right{
+    border-left:1px solid;
+}
+
+.info_deal_left span,.info_deal_right span{
+    font-weight:bold;
 }

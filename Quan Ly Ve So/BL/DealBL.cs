@@ -24,9 +24,14 @@ namespace Quan_Ly_Ve_So.BL
         {
             return D_DAL.AgencyList();
         }
-        public DataTable Find(DealDTO TOP)
+        public DataTable Find_mul_deal(DealDTO TOP)
         {
-            return D_DAL.Find(TOP);
+            return D_DAL.Find_mul_deal(TOP);
+        }
+
+        public DataTable Find(string search_by, string value)
+        {
+            return D_DAL.Find(search_by, value);
         }
 
         public bool Insert(DealDTO DO)
@@ -55,11 +60,11 @@ namespace Quan_Ly_Ve_So.BL
             return true;
         }
 
-        public bool Delete(string id_delete)
+        public bool Delete(DealDTO TOP)
         {
             try
             {
-                D_DAL.Delete(id_delete);
+                D_DAL.Delete(TOP);
             }
             catch (Exception ex)
             {

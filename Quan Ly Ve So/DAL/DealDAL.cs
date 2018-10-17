@@ -37,7 +37,7 @@ namespace Quan_Ly_Ve_So.DAL
             return ds;
         }
 
-        public DataTable Find(DealDTO TOP)
+        public DataTable Find_mul_deal(DealDTO TOP)
         {
             ConnectDB.con.Open();
             SqlCommand cmd = new SqlCommand("find_MUL_DEAL", ConnectDB.con);
@@ -45,6 +45,21 @@ namespace Quan_Ly_Ve_So.DAL
             cmd.Parameters.Add("@ID_TYPE", SqlDbType.VarChar).Value = TOP.ID_TYPE;
             cmd.Parameters.Add("@ID_AGENCY", SqlDbType.VarChar).Value = TOP.ID_AGENCY;
             cmd.Parameters.Add("@DATE", SqlDbType.VarChar).Value = TOP.DATE_RECEIVE;
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable tb = new DataTable();
+            sda.Fill(tb);
+            ConnectDB.con.Close();
+            return tb;
+        }
+
+        public DataTable Find(string search_by, string value)
+        {
+            ConnectDB.con.Open();
+            SqlCommand cmd = new SqlCommand("find_DEAL", ConnectDB.con);
+            cmd.Connection = ConnectDB.con;
+            cmd.Parameters.Add("@SEARCH_BY", SqlDbType.VarChar).Value = search_by;
+            cmd.Parameters.Add("@VALUE", SqlDbType.VarChar).Value = value;
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
@@ -101,13 +116,15 @@ namespace Quan_Ly_Ve_So.DAL
                 ConnectDB.con.Close();
             }
         }
-        public void Delete(string id_delete)
+        public void Delete(DealDTO TOP)
         {
             ConnectDB.con.Open();
             try
             {
                 SqlCommand cmd = new SqlCommand("delete_DEAL", ConnectDB.con);
-                cmd.Parameters.Add("@ID_TYPE", SqlDbType.VarChar).Value = id_delete;
+                cmd.Parameters.Add("@ID_TYPE", SqlDbType.VarChar).Value = TOP.ID_TYPE;
+                cmd.Parameters.Add("@ID_AGENCY", SqlDbType.VarChar).Value = TOP.ID_AGENCY;
+                cmd.Parameters.Add("@DATE_RECEIVE", SqlDbType.VarChar).Value = TOP.DATE_RECEIVE;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();
             }
