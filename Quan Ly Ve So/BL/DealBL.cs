@@ -29,6 +29,16 @@ namespace Quan_Ly_Ve_So.BL
             return D_DAL.Find_mul_deal(TOP);
         }
 
+        //FUNCTION NGHIEP VU
+        public DataTable Get_Quantity_sign(string ID_AGENCY, string ID_TYPE)
+        {
+            return D_DAL.Get_Quantity_sign(ID_AGENCY, ID_TYPE);
+        }
+
+
+
+
+
         public DataTable Find(string search_by, string value)
         {
             return D_DAL.Find(search_by, value);

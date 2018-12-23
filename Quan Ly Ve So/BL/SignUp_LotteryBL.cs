@@ -21,6 +21,10 @@ namespace Quan_Ly_Ve_So.BL
         {
             return SUL_DAL.AgencyList();
         }
+        public DataSet TypeList()
+        {
+            return SUL_DAL.TypeList();
+        }
         public DataTable Find(string search_by, string value)
 		{
 			return SUL_DAL.Find(search_by, value);

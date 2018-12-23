@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Quan_Ly_Ve_So.UI {
+namespace Quan_Ly_Ve_So.UI.Receipts {
     
     
-    public partial class Deal {
+    public partial class Receipts {
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -22,166 +22,139 @@ namespace Quan_Ly_Ve_So.UI {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// Type control.
+        /// Id_indebtedness control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Type;
+        protected global::System.Web.UI.WebControls.Label Id_indebtedness;
         
         /// <summary>
-        /// ddlType control.
+        /// list_Id_Indebtedness control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlType;
+        protected global::System.Web.UI.WebControls.DropDownList list_Id_Indebtedness;
         
         /// <summary>
-        /// Agency control.
+        /// Id_Type control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Agency;
+        protected global::System.Web.UI.WebControls.Label Id_Type;
         
         /// <summary>
-        /// ddlAgency control.
+        /// input_Id_Type control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAgency;
+        protected global::System.Web.UI.WebControls.TextBox input_Id_Type;
         
         /// <summary>
-        /// Quantity_Receive control.
+        /// Id_Agency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Quantity_Receive;
+        protected global::System.Web.UI.WebControls.Label Id_Agency;
         
         /// <summary>
-        /// input_QuantityReceive control.
+        /// input_Id_Agency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox input_QuantityReceive;
+        protected global::System.Web.UI.WebControls.TextBox input_Id_Agency;
         
         /// <summary>
-        /// Quantity_Sell control.
+        /// Payment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Quantity_Sell;
+        protected global::System.Web.UI.WebControls.Label Payment;
         
         /// <summary>
-        /// input_QuantitySell control.
+        /// input_Payment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox input_QuantitySell;
+        protected global::System.Web.UI.WebControls.TextBox input_Payment;
         
         /// <summary>
-        /// DateReceive control.
+        /// Date_Ind control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DateReceive;
+        protected global::System.Web.UI.WebControls.Label Date_Ind;
         
         /// <summary>
-        /// input_DateReceive control.
+        /// input_Date_Ind control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox input_DateReceive;
+        protected global::System.Web.UI.WebControls.TextBox input_Date_Ind;
         
         /// <summary>
-        /// Commission control.
+        /// Date_Receipts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Commission;
+        protected global::System.Web.UI.WebControls.Label Date_Receipts;
         
         /// <summary>
-        /// input_Commission control.
+        /// input_Date_Receipts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox input_Commission;
+        protected global::System.Web.UI.WebControls.TextBox input_Date_Receipts;
         
         /// <summary>
-        /// error_sentence control.
+        /// search_indebtedness control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl error_sentence;
+        protected global::System.Web.UI.WebControls.Label search_indebtedness;
         
         /// <summary>
-        /// error_input_QuantityReceive control.
+        /// input_search_indebtedness control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label error_input_QuantityReceive;
+        protected global::System.Web.UI.WebControls.TextBox input_search_indebtedness;
         
         /// <summary>
-        /// cal_QuantityReceive control.
+        /// table_indebtedness control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cal_QuantityReceive;
-        
-        /// <summary>
-        /// title_batch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label title_batch;
-        
-        /// <summary>
-        /// table_batch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder table_batch;
-        
-        /// <summary>
-        /// cal_quantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cal_quantity;
+        protected global::System.Web.UI.WebControls.PlaceHolder table_indebtedness;
         
         /// <summary>
         /// function_insert control.
@@ -229,12 +202,12 @@ namespace Quan_Ly_Ve_So.UI {
         protected global::System.Web.UI.WebControls.Button button_find;
         
         /// <summary>
-        /// table_deal control.
+        /// table_receipts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder table_deal;
+        protected global::System.Web.UI.WebControls.PlaceHolder table_receipts;
     }
 }

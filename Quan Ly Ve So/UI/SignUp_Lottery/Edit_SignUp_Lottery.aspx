@@ -16,7 +16,13 @@
             <div class="form-group">               
                 <asp:Label ID="Id_Agency" runat="server" Text="Mã đại lý: " CssClass="control-label col-sm-2"></asp:Label>
                 <div class="col-sm-6">                    
-                    <asp:DropDownList ID="input_id_agency" runat="server" CssClass="form-control"></asp:DropDownList>
+                    <asp:DropDownList ID="input_id_agency" runat="server" CssClass="form-control" AppendDataBoundItems="True"></asp:DropDownList>
+                </div>
+            </div>
+            <div class="form-group">               
+                <asp:Label ID="Id_Type" runat="server" Text="Mã đại lý: " CssClass="control-label col-sm-2"></asp:Label>
+                <div class="col-sm-6">                    
+                    <asp:DropDownList ID="input_Id_type" runat="server" CssClass="form-control" AppendDataBoundItems="True"></asp:DropDownList>
                 </div>
             </div>
             <div class="form-group">               

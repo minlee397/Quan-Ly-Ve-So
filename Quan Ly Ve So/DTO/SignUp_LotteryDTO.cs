@@ -9,7 +9,8 @@ namespace Quan_Ly_Ve_So.DTO
 	{
 		public string ID_SIGN { get; set; }
 		public string ID_AGENCY { get; set; }
-		public string DATE_SIGN { get; set; }
+        public string ID_TYPE { get; set; }
+        public string DATE_SIGN { get; set; }
 		public int QUANITY_SIGN { get; set; }
 	}
 }

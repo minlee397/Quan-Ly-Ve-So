@@ -31,6 +31,24 @@ namespace Quan_Ly_Ve_So.UI {
         protected global::System.Web.UI.WebControls.DropDownList input_Id_agency;
         
         /// <summary>
+        /// Id_type control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Id_type;
+        
+        /// <summary>
+        /// input_Id_type control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList input_Id_type;
+        
+        /// <summary>
         /// Date_sign control.
         /// </summary>
         /// <remarks>

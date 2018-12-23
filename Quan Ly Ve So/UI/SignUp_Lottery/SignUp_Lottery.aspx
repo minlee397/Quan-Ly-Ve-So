@@ -18,9 +18,16 @@
                                     <div class="form-group">                                        
                                         <asp:Label ID="Id_agency" runat="server" Text="Tên đại lý: " CssClass="control-label col-sm-3 col-lg-3"></asp:Label>
                                         <div class="col-sm-6 col-lg-6">
-                                            <asp:DropDownList ID="input_Id_agency" runat="server" CssClass="form-control"></asp:DropDownList>
+                                            <asp:DropDownList ID="input_Id_agency" runat="server" CssClass="form-control" AppendDataBoundItems="True" AutoPostBack="False"></asp:DropDownList>
                                         </div>                                       
-                                    </div>     <div class="form-group">                                        
+                                    </div>
+                                    <div class="form-group">                                        
+                                        <asp:Label ID="Id_type" runat="server" Text="Loại vé số: " CssClass="control-label col-sm-3 col-lg-3"></asp:Label>
+                                        <div class="col-sm-6 col-lg-6">
+                                            <asp:DropDownList ID="input_Id_type" runat="server" CssClass="form-control" AppendDataBoundItems="True" AutoPostBack="False"></asp:DropDownList>
+                                        </div>                                       
+                                    </div>     
+                                    <div class="form-group">                                        
                                         <asp:Label ID="Date_sign" runat="server" Text="Ngày đăng kí: " CssClass="control-label col-sm-3 col-lg-3"></asp:Label>
                                         <div class="col-sm-6 col-lg-6">
                                             <asp:TextBox ID="input_Date_sign" runat="server" CssClass="form-control"></asp:TextBox>

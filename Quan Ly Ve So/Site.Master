@@ -65,6 +65,8 @@
                     <li><a href="../Agency/Agency.aspx"><i class="fa fa-home"></i> Đại Lý</a></li>
                     <li><a href="../SignUp_Lottery/SignUp_Lottery.aspx"><i class="fa fa-pencil-square-o"></i> Đăng kí vé số</a></li>
                     <li><a href="../Deal/Deal.aspx"><i class="fa fa-truck"></i> Đợt Phát hành</a></li>
+                    <li><a href="../Receipts/Receipts.aspx"><i class="fa fa-file"></i> Phiếu Thu</a></li>
+                    <li><a href="../Indebtedness/Indebtedness.aspx"><i class="fa fa-money"></i> Công nợ</a></li>
                     <li><a href="../Result_Lottery/Result_Lottery.aspx"><i class="fa fa-file-text-o"></i> Kết quả xổ số</a></li>
                     <li><a href="../Prize/Prize.aspx"><i class="fa fa-trophy"></i> Loại giải thưởng</a></li>
                     <li><a href="#"><i class="fa fa-cog"></i> Cài đặt</a></li>
@@ -111,6 +113,7 @@
     <asp:PlaceHolder runat="server">
     <% Scripts.Render("~/bundles/site"); %>
     </asp:PlaceHolder>
+   
 </body>
 
 </html>

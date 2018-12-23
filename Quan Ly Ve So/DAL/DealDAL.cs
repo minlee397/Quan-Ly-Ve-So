@@ -22,7 +22,9 @@ namespace Quan_Ly_Ve_So.DAL
         public DataSet TypeList()
         {
             ConnectDB.con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT DISTINCT ID_TYPE FROM TYPE_LOTTERY", ConnectDB.con);
+            SqlCommand cmd = new SqlCommand("load_id_TYPE_LOTTERY", ConnectDB.con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
             return ds;
@@ -31,7 +33,9 @@ namespace Quan_Ly_Ve_So.DAL
         public DataSet AgencyList()
         {
             ConnectDB.con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT DISTINCT ID_AGENCY FROM AGENCY", ConnectDB.con);
+            SqlCommand cmd = new SqlCommand("load_id_AGENCY", ConnectDB.con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
             return ds;
@@ -53,11 +57,31 @@ namespace Quan_Ly_Ve_So.DAL
             return tb;
         }
 
+        //FUNCTION NGHIEP VU
+
+        // Lấy số lượng đăng kí vé số của một Đại Lý 
+        public DataTable Get_Quantity_sign(string ID_AGENCY, string ID_TYPE)
+        {
+            ConnectDB.con.Open();
+            SqlCommand cmd = new SqlCommand("get_QUANTITY_SIGN", ConnectDB.con);
+            cmd.Parameters.Add("@ID_AGENCY", SqlDbType.VarChar).Value = ID_AGENCY;
+            cmd.Parameters.Add("@ID_TYPE", SqlDbType.VarChar).Value = ID_TYPE;           
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable ds = new DataTable();
+            da.Fill(ds);
+            ConnectDB.con.Close();
+            return ds;
+        }
+
+
+
+        // FUNCTION CRUD
         public DataTable Find(string search_by, string value)
         {
             ConnectDB.con.Open();
-            SqlCommand cmd = new SqlCommand("find_DEAL", ConnectDB.con);
-            cmd.Connection = ConnectDB.con;
+            SqlCommand cmd = new SqlCommand("find_DEAL", ConnectDB.con);            
             cmd.Parameters.Add("@SEARCH_BY", SqlDbType.VarChar).Value = search_by;
             cmd.Parameters.Add("@VALUE", SqlDbType.VarChar).Value = value;
             cmd.CommandType = CommandType.StoredProcedure;

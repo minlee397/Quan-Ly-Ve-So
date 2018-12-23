@@ -19,7 +19,7 @@ namespace Quan_Ly_Ve_So.BL
 
 
         /****************************/
-       
+
         public DataSet TypeList()
         {
             return R_DAL.TypeList();
@@ -72,6 +72,11 @@ namespace Quan_Ly_Ve_So.BL
                 return false;
             }
             return true;
+        }
+
+        public SqlDataReader SearchNumberWin(Result_LotteryDTO RSL)
+        {
+            return R_DAL.SearchNumberWin(RSL);
         }
     }
 }

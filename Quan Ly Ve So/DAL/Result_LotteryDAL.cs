@@ -121,5 +121,18 @@ namespace Quan_Ly_Ve_So.DAL
                 ConnectDB.con.Close();
             }
         }
+
+        public SqlDataReader SearchNumberWin(Result_LotteryDTO RSL)
+        {
+            ConnectDB.con.Open();
+            SqlCommand cmd = new SqlCommand("search_WINNER_NUMBER", ConnectDB.con);
+            cmd.Parameters.Add("@NUMBER_WIN", SqlDbType.VarChar).Value = RSL.NUMBER_WIN;
+            cmd.Parameters.Add("@ID_TYPE", SqlDbType.VarChar).Value = RSL.ID_TYPE;
+            cmd.Parameters.Add("@DATE_RESULT", SqlDbType.DateTime).Value = RSL.DATE_RESULT;
+            cmd.Parameters.Add("@LEN_NUMBER", SqlDbType.Int).Value = RSL.LEN_NUMBER;
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader rd = cmd.ExecuteReader();
+            return rd;
+        }
     }
 }

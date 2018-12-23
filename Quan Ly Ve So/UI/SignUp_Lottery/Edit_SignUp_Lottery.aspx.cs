@@ -21,7 +21,7 @@ namespace Quan_Ly_Ve_So.UI
 			{
 				id_edit = Request["edit"];
 				input_id_sign.Text = id_edit;
-
+                Loadinfo();
 				loadDataFind();
                 BindData();
             }
@@ -33,12 +33,24 @@ namespace Quan_Ly_Ve_So.UI
 			Response.Write("<script> alert('" + str + ".'); window.location.href='./" + Path + "'; </script>");
 		}
 
+        public void Loadinfo()
+        {
+            input_id_agency.Items.Add(new ListItem("Chọn đại lý", "none"));
+            input_Id_type.Items.Add(new ListItem("Chọn loại vé số", "none"));
+        }
+
         public void BindData()
         {
             input_id_agency.DataSource = SULBL.AgencyList();
             input_id_agency.DataValueField = "ID_AGENCY";
             input_id_agency.DataTextField = "AGENCY_LIST";
             input_id_agency.DataBind();
+            ConnectDB.con.Close();
+
+            input_Id_type.DataSource = SULBL.TypeList();
+            input_Id_type.DataValueField = "ID_TYPE";
+            input_Id_type.DataTextField = "TYPE_LIST";
+            input_Id_type.DataBind();
             ConnectDB.con.Close();
         }
 
@@ -47,10 +59,10 @@ namespace Quan_Ly_Ve_So.UI
 			DataTable tb = SULBL.Find("ID_SIGN", id_edit);
 			input_id_sign.Text = id_edit;
 			input_id_agency.Text = tb.Rows[0][1].ToString();
-
-            string[] date = tb.Rows[0][2].ToString().Split(' ');
+            input_Id_type.Text = tb.Rows[0][2].ToString();
+            string[] date = tb.Rows[0][3].ToString().Split(' ');
             input_date_sign.Text = date[0];
-			input_quantity.Text = tb.Rows[0][3].ToString();
+			input_quantity.Text = tb.Rows[0][4].ToString();
 		}
 
 		protected void btn_edit_Click(object sender, EventArgs e)
@@ -59,6 +71,7 @@ namespace Quan_Ly_Ve_So.UI
 
 			SULO.ID_SIGN = input_id_sign.Text;
 			SULO.ID_AGENCY = input_id_agency.SelectedValue;
+            SULO.ID_TYPE = input_Id_type.SelectedValue;
             string[] d = input_date_sign.Text.Split('/');
             string date = d[1] + "-" + d[0] + "-" + d[2];
 

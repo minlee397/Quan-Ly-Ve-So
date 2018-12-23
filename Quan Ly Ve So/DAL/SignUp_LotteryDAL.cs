@@ -29,6 +29,17 @@ namespace Quan_Ly_Ve_So.DAL
             da.Fill(ds);
             return ds;
         }
+
+        public DataSet TypeList()
+        {
+            ConnectDB.con.Open();
+            SqlCommand cmd = new SqlCommand("load_id_TYPE_LOTTERY", ConnectDB.con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
         public DataTable Find(string search_by, string value)
 		{
 			ConnectDB.con.Open();
@@ -51,7 +62,8 @@ namespace Quan_Ly_Ve_So.DAL
 			{
 				SqlCommand cmd = new SqlCommand("insert_SIGN_UP_LOTTERY", ConnectDB.con);
 				cmd.Parameters.Add("@ID_AGENCY", SqlDbType.VarChar).Value = TOP.ID_AGENCY;
-				cmd.Parameters.Add("@DATE_SIGN", SqlDbType.VarChar).Value = TOP.DATE_SIGN;
+                cmd.Parameters.Add("@ID_TYPE", SqlDbType.VarChar).Value = TOP.ID_TYPE;
+                cmd.Parameters.Add("@DATE_SIGN", SqlDbType.VarChar).Value = TOP.DATE_SIGN;
 				cmd.Parameters.Add("@QUANTITY", SqlDbType.Int).Value = TOP.QUANITY_SIGN;
 				cmd.CommandType = CommandType.StoredProcedure;
 				cmd.ExecuteNonQuery();
@@ -74,7 +86,8 @@ namespace Quan_Ly_Ve_So.DAL
 				SqlCommand cmd = new SqlCommand("edit_SIGN_UP_LOTTERY", ConnectDB.con);
 				cmd.Parameters.Add("@ID_SIGN", SqlDbType.VarChar).Value = TOP.ID_SIGN;
 				cmd.Parameters.Add("@ID_AGENCY", SqlDbType.VarChar).Value = TOP.ID_AGENCY;
-				cmd.Parameters.Add("@DATE_SIGN", SqlDbType.VarChar).Value = TOP.DATE_SIGN;
+                cmd.Parameters.Add("@ID_TYPE", SqlDbType.VarChar).Value = TOP.ID_TYPE;
+                cmd.Parameters.Add("@DATE_SIGN", SqlDbType.VarChar).Value = TOP.DATE_SIGN;
 				cmd.Parameters.Add("@QUANTITY_SIGN", SqlDbType.Int).Value = TOP.QUANITY_SIGN;
 				cmd.CommandType = CommandType.StoredProcedure;
 				cmd.ExecuteNonQuery();

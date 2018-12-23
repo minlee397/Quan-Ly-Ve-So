@@ -22,7 +22,7 @@
             <div class="form-group">
                 <asp:Label ID="QuantityReceive" runat="server" Text="Số lượng nhận: " CssClass="control-label col-sm-2"></asp:Label>
                 <div class="col-sm-6">
-                    <asp:TextBox ID="input_QuantityReceive" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="input_QuantityReceive" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                 </div>
             </div>
             <div class="form-group">
@@ -41,7 +41,7 @@
             <div class="form-group">
                 <asp:Label ID="Commission" runat="server" Text="Hoa hồng: " CssClass="control-label col-sm-2"></asp:Label>
                 <div class="col-sm-6">
-                    <asp:TextBox ID="input_Commission" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="input_Commission" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                 </div>
             </div>
             <div class="form-group">

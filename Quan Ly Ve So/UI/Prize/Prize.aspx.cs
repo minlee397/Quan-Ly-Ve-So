@@ -46,7 +46,7 @@ namespace Quan_Ly_Ve_So.UI.Prize
                     table.Append("<td>" + i + "</td>");
                     table.Append("<td>" + rd[0] + "</td>");
                     table.Append("<td>" + rd[1] + "</td>");
-                    table.Append("<td>" + rd[2] + "</td>");
+                    table.Append("<td>" + string.Format("{0:0,0}", rd[2]) + " VNĐ</td>");
                     table.Append("<td>");
                     table.Append("<a href='./Edit_Prize?edit=" + rd[0] + "'><i class='fa fa-edit'></i></a>");
                     table.Append("</td>");

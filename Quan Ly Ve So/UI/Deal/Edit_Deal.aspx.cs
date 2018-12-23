@@ -66,9 +66,7 @@ namespace Quan_Ly_Ve_So.UI
             string date = d[1] + "-" + d[0] + "-" + d[2];
             DO.DATE_RECEIVE = date;
                        
-            DO.COMMISSION = input_Commission.Text;
-
-            //MessageBox(input_Type.Text + " " + input_Agency.Text + " " + input_QuantityReceive.Text + " " + input_QuantitySell.Text + " " + date + " " + input_Commission.Text, "Deal.aspx");
+            DO.COMMISSION = input_Commission.Text;            
 
             if (DBL.Edit(DO) == true)
             {

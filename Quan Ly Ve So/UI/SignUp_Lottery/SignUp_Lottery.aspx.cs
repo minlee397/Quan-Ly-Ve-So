@@ -21,7 +21,8 @@ namespace Quan_Ly_Ve_So.UI
         {
             if (!IsPostBack)
             {
-                uploadData();
+                uploadData();                
+                Loadinfo();
                 BindData();
             }
         }
@@ -31,12 +32,27 @@ namespace Quan_Ly_Ve_So.UI
             Response.Write("<script> alert('" + str + ".'); window.location.href='./" + Path + "'; </script>");
         }
 
+        public void Loadinfo()
+        {
+            DateTime date = DateTime.Now;
+            input_Date_sign.Text = date.ToString("dd/MM/yyyy");
+
+            input_Id_agency.Items.Add(new ListItem("Chọn đại lý", "none"));
+            input_Id_type.Items.Add(new ListItem("Chọn loại vé số", "none"));
+        }
+
         public void BindData()
         {
             input_Id_agency.DataSource = SULBL.AgencyList();
             input_Id_agency.DataValueField = "ID_AGENCY";
             input_Id_agency.DataTextField = "AGENCY_LIST";
             input_Id_agency.DataBind();
+            ConnectDB.con.Close();
+
+            input_Id_type.DataSource = SULBL.TypeList();
+            input_Id_type.DataValueField = "ID_TYPE";
+            input_Id_type.DataTextField = "TYPE_LIST";
+            input_Id_type.DataBind();
             ConnectDB.con.Close();
         }
 
@@ -47,7 +63,7 @@ namespace Quan_Ly_Ve_So.UI
             table = new StringBuilder();
             table.Append("<table class='table table-hover'");
             table.Append("<tr>");
-            table.Append("<th>STT</th><th>Mã đăng kí</th><th>Tên đại lý</th><th>Ngày đăng kí</th><th>Số lượng</th><th>Sửa</th><th>Xóa</th>");
+            table.Append("<th>STT</th><th>Mã đăng kí</th><th>Tên đại lý</th><th>Tên loại vé số</th><th>Ngày đăng kí</th><th>Số lượng</th><th>Sửa</th><th>Xóa</th>");
             table.Append("</tr>");
 
             int i = 1;
@@ -59,12 +75,13 @@ namespace Quan_Ly_Ve_So.UI
                     table.Append("<td>" + i + "</td>");
                     table.Append("<td>" + rd[0] + "</td>");
                     table.Append("<td>" + rd[1] + "</td>");
+                    table.Append("<td>" + rd[2] + "</td>");
+                    string[] d_split = rd[3].ToString().Split(' ');
+                    
+                   
 
-                    string[] d_split = rd[2].ToString().Split(' ');
-                    string[] date = d_split[0].Split('/');
-
-                    table.Append("<td>" + date[0] + "</td>");
-                    table.Append("<td>" + rd[3] + "</td>");
+                    table.Append("<td>" + d_split[0] + "</td>");
+                    table.Append("<td>" + rd[4] + "</td>");
                     table.Append("<td>");
                     table.Append("<a href='./Edit_SignUp_Lottery?edit=" + rd[0] + "'><i class='fa fa-edit'></i></a>");
                     table.Append("</td>");
@@ -84,6 +101,7 @@ namespace Quan_Ly_Ve_So.UI
             SignUp_LotteryDTO SLO = new SignUp_LotteryDTO();
 
             SLO.ID_AGENCY = input_Id_agency.SelectedValue;
+            SLO.ID_TYPE = input_Id_type.SelectedValue;
 
             string[] d = input_Date_sign.Text.Split('/');
             string date = d[1] + "-" + d[0] + "-" + d[2];

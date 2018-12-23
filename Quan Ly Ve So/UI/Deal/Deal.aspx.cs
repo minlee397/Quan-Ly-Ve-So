@@ -33,13 +33,9 @@ namespace Quan_Ly_Ve_So.UI
             DateTime date = DateTime.Now;
             input_DateReceive.Text = date.ToString("dd/MM/yyyy");
             input_DateReceive.Attributes.Add("readonly", "readonly");
+            input_QuantityReceive.Attributes.Add("readonly", "readonly");
             input_QuantitySell.Attributes.Add("readonly", "readonly");
-
-            // load hoa hồng
-            for (int i = 10; i <= 100; i=i+10)
-            {
-                input_Commission.Items.Add(new ListItem(i.ToString() + "%", i.ToString()));
-            }
+            input_Commission.Attributes.Add("readonly", "readonly");
 
             //Load tìm theo
             Search_by.Items.Add(new ListItem("Tìm theo: ", "NONE"));
@@ -50,13 +46,17 @@ namespace Quan_Ly_Ve_So.UI
 
         public void BindData()
         {
+            ddlType.Items.Add(new ListItem("Chọn loại vé số", "veso"));
             ddlType.DataSource = DBL.TypeList();         
             ddlType.DataValueField = "ID_TYPE";            
+            ddlType.DataTextField = "TYPE_LIST";
             ddlType.DataBind();           
             ConnectDB.con.Close();
 
+            ddlAgency.Items.Add(new ListItem("Chọn đại lý", "daily"));
             ddlAgency.DataSource = DBL.AgencyList();
             ddlAgency.DataValueField = "ID_AGENCY";
+            ddlAgency.DataTextField = "AGENCY_LIST";
             ddlAgency.DataBind();
             ConnectDB.con.Close();
         }
@@ -71,7 +71,7 @@ namespace Quan_Ly_Ve_So.UI
             table = new StringBuilder();
             table.Append("<table class='table table-hover'");
             table.Append("<tr>");
-            table.Append("<th>STT</th><th>Mã đài</th><th>Mã đại lý</th><th>Số lượng nhận</th><th>Số lượng bán</th><th>Ngày nhận</th><th>Hoa hồng</th><th>Xem</th><th>Sửa</th><th>Xóa</th>");
+            table.Append("<th>STT</th><th>Mã đài</th><th>Mã đại lý</th><th>Số lượng nhận</th><th>Số lượng bán</th><th>Ngày nhận</th><th>Hoa hồng</th><th>Tổng tiền</th><th>Xem</th><th>Sửa</th><th>Xóa</th>");
             table.Append("</tr>");
 
             int i = 1;
@@ -92,6 +92,13 @@ namespace Quan_Ly_Ve_So.UI
 
                     table.Append("<td>" + d[0] + "</td>");
                     table.Append("<td>" + rd[5] + " %</td>");
+
+                    float price = (float.Parse(rd[3].ToString()) * 10000);
+                    float commssion = price * (float.Parse(rd[5].ToString()) / 100);
+                    float total_price = price - commssion;
+
+                    table.Append("<td>" + string.Format("{0:0,0}",total_price) + " VNĐ</td>");
+
                     table.Append("<td>");
                     table.Append("<a href='' data-toggle='modal' data-target='#" + rd[0] + "-" + rd[1] + "-" + date + "'><i class='fa fa-eye'></i></a>");
 
@@ -161,19 +168,24 @@ namespace Quan_Ly_Ve_So.UI
             string[] d = input_DateReceive.Text.Split('/');
             string date = d[1] + "-" + d[0] + "-" + d[2];
             DO.DATE_RECEIVE = date;
-            DO.COMMISSION = input_Commission.SelectedValue;
+            DO.COMMISSION = "10";
 
-            MessageBox(input_Commission.Text, "Deal.aspx");
-
-            if (DBL.Insert(DO) == true)
+            if (input_QuantityReceive.Text != "")
             {
-                MessageBox("Thêm thành công", "Deal.aspx");
-                uploadData();
+                if (DBL.Insert(DO) == true)
+                {
+                    MessageBox("Thêm thành công", "Deal.aspx");
+                    uploadData();
+                }
+                else
+                {
+                    MessageBox("Lỗi hệ thống", "Deal.aspx");
+                    uploadData();
+                }
             }
             else
             {
-                MessageBox("Thêm không thành công", "Deal.aspx");
-                uploadData();
+                MessageBox("Lỗi dữ liệu vào, xem lại lỗi ở khung dưới thêm!!!", "Deal.aspx");
             }
         }
 
@@ -268,6 +280,126 @@ namespace Quan_Ly_Ve_So.UI
                 table_deal.Controls.Add(content);
                 ConnectDB.con.Close();
             }
+        }
+
+        public void printf_table_batch(DataTable rd)
+        {
+            table_batch.Controls.Remove(content);
+            table = new StringBuilder();
+            table.Append("<table class='table table-hover'");
+            table.Append("<tr>");
+            table.Append("<th>STT</th><th>Số lượng nhận</th><th>Số lượng bán</th><th>Ngày nhận</th><th>Tỉ lệ bán được</th>");
+            table.Append("</tr>");
+
+            for (int i = 0; i < rd.Rows.Count; i++)
+            {
+                table.Append("<tr>");
+                table.Append("<td>" + (i + 1) + "</td>");
+                table.Append("<td>" + rd.Rows[i][3] + "</td>");
+                table.Append("<td>" + rd.Rows[i][4] + "</td>");
+
+                string[] d = rd.Rows[i][5].ToString().Split(' ');
+                string[] date_s = d[0].Split('/');
+                string date = date_s[1] + "-" + date_s[0] + "-" + date_s[2];
+
+                table.Append("<td>" + date + "</td>");
+                table.Append("<td>" + (float.Parse(rd.Rows[i][4].ToString()) / float.Parse(rd.Rows[i][3].ToString())) + "</td>");
+                table.Append("</tr>");
+            }
+            table.Append("</table>");
+            content = new Literal { Text = table.ToString() };
+            table_batch.Controls.Add(content);
+        }
+
+        public void cal_batch()
+        {
+            string Id_agency = ddlAgency.SelectedValue;
+            string Id_type = ddlType.SelectedValue;
+            DataTable rd = DBL.Get_Quantity_sign(Id_agency, Id_type);
+
+            if ((int)rd.Rows[0][0] == -1)
+            {
+                cal_QuantityReceive.Style.Add("display", "none");
+                error_sentence.Style.Add("display", "block");
+                error_input_QuantityReceive.Text = "Đại lý này chưa đăng kí loại vé số này, Hãy đăng kí vé số trước khi thêm đợt!!!";
+                input_QuantityReceive.Text = "";
+                function_insert.Enabled = false;
+            }
+            else if ((int)rd.Rows[0][0] == 0)
+            {
+                function_insert.Enabled = true;
+                cal_QuantityReceive.Style.Add("display", "none");
+                error_sentence.Style.Add("display", "none");
+                input_QuantityReceive.Text = rd.Rows[0][1].ToString();
+                error_input_QuantityReceive.Text = "";
+            }
+            else if ((int)rd.Rows[0][0] == 1)
+            {
+                function_insert.Enabled = true;
+                error_sentence.Style.Add("display", "none");
+                error_input_QuantityReceive.Text = "";
+                cal_QuantityReceive.Style.Add("display", "block");
+                title_batch.Text = "Tổng 3 đợt trước của đại lý: " + rd.Rows[0][2] + ", đăng ký loại vé số: " + rd.Rows[0][1];
+
+                float q = (float.Parse(rd.Rows[0][4].ToString()) / float.Parse(rd.Rows[0][3].ToString())) * 100;
+                int Quantity = (int)q;
+
+                printf_table_batch(rd);
+                cal_quantity.Text = "Do 1 đợt => (" + Quantity + ")/1 = " + q;
+
+                string QuantityReceive = Quantity.ToString();
+                input_QuantityReceive.Text = QuantityReceive;
+            }
+            else if ((int)rd.Rows[0][0] == 2)
+            {
+                function_insert.Enabled = true;
+                error_sentence.Style.Add("display", "none");
+                error_input_QuantityReceive.Text = "";
+                cal_QuantityReceive.Style.Add("display", "block");
+                title_batch.Text = "Tổng 3 đợt trước của đại lý: " + rd.Rows[0][2] + ", đăng ký loại vé số: " + rd.Rows[0][1];
+
+                float Quantity_1 = (float.Parse(rd.Rows[0][4].ToString()) / float.Parse(rd.Rows[0][3].ToString()));
+                float Quantity_2 = (float.Parse(rd.Rows[1][4].ToString()) / float.Parse(rd.Rows[1][3].ToString()));
+
+                float q = ((Quantity_1 + Quantity_2) / 2) * 100;
+                int Quantity = (int)q;
+
+                printf_table_batch(rd);
+                cal_quantity.Text = "Do 2 đợt => (" + Quantity_1 + " + " + Quantity_2 + ")/2 = " + q;
+
+                string QuantityReceive = Quantity.ToString();
+                input_QuantityReceive.Text = QuantityReceive;
+            }
+            else if ((int)rd.Rows[0][0] == 3)
+            {
+                function_insert.Enabled = true;
+                error_sentence.Style.Add("display", "none");
+                error_input_QuantityReceive.Text = "";
+                cal_QuantityReceive.Style.Add("display", "block");
+                title_batch.Text = "Tổng 3 đợt trước của đại lý: " + rd.Rows[0][2] + ", đăng ký loại vé số: " + rd.Rows[0][1];
+
+                float Quantity_1 = (float.Parse(rd.Rows[0][4].ToString()) / float.Parse(rd.Rows[0][3].ToString()));
+                float Quantity_2 = (float.Parse(rd.Rows[1][4].ToString()) / float.Parse(rd.Rows[1][3].ToString()));
+                float Quantity_3 = (float.Parse(rd.Rows[2][4].ToString()) / float.Parse(rd.Rows[2][3].ToString()));
+
+                float q = ((Quantity_1 + Quantity_2 + Quantity_3) / 3) * 100;
+                int Quantity = (int)q;
+
+                printf_table_batch(rd);
+                cal_quantity.Text = "Do 3 đợt => (" + Quantity_1 + " + " + Quantity_2 + " + " + Quantity_2 + ")/3 = " + q;
+
+                string QuantityReceive = Quantity.ToString();
+                input_QuantityReceive.Text = QuantityReceive;
+            }
+        }
+
+        protected void ddlAgency_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cal_batch();
+        }
+        protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cal_batch();
         }
     }
 }

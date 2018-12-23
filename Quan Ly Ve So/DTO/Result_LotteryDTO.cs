@@ -11,6 +11,7 @@ namespace Quan_Ly_Ve_So.DTO
         public string ID_TYPE { get; set; }
         public string ID_PRIZE { get; set; }
         public string DATE_RESULT { get; set; }
-        public string NUMBER_WIN { get; set; }    
+        public string NUMBER_WIN { get; set; }
+        public int LEN_NUMBER { get; set; }
     }
 }

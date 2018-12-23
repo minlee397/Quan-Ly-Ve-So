@@ -10,6 +10,15 @@ body {
     font-weight:bold;    
 }
 
+.box_error{
+    text-align:center;
+    padding:2% 0;
+}
+
+.error_style{
+    color:#cb3535;
+}
+
 .myrblclass input[type="radio"]{
    margin-left: 10px;
    margin-right: 1px;
@@ -200,4 +209,26 @@ a[data-toggle="collapse"]{
 
 .info_deal_left span,.info_deal_right span{
     font-weight:bold;
+}
+
+.title_batch{
+    font-weight:bold;
+}
+
+.cal_quantity{
+    font-weight:bold;    
+}
+
+.title_indebtedness{
+    margin-top:1%;
+    border-top:1px solid #cbcbcb;
+    padding:2%;
+    font-weight:bold;
+}
+
+.box_result{
+    overflow-y: scroll;
+    height:300px;
+    border:1px solid #cbcbcb;
+    border-radius:10px;    
 }
